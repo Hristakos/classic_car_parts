@@ -18,8 +18,8 @@ def find_a_listing_by_id(id)
     run_sql("select * from listings where id = $1;",[id])[0]
 end
 
-def update_listing(id, headline)
-    run_sql("update listings set headline = $1 where id = $2;",[headline,id])
+def update_listing(id, headline, description)
+    run_sql("update listings set headline = $1, description = $2 where id = $3;",[headline,description,id])
 end
 
 def delete_listing(id)

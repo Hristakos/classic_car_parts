@@ -1,0 +1,11 @@
+<h1>Edit New Advertisment</h1>
+
+<form action="/listings" method="post">
+    <input type="hidden" name="_method" value="patch">
+     <input type="hidden" name ="id"  value=<%=listing["id"]%>>
+    <label for="">Headline:</label>
+    <input name ="headline" type="text" value='<%= listing["headline"]%>'>
+    <label for="">Description</label>
+    <input name= "description"type="text" value='<%= listing["description"]%>'>
+    <button>Update</button>
+</form>
