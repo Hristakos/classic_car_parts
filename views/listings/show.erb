@@ -1,0 +1,10 @@
+<h1><%=listing["headline"]%></h1>
+
+<p><%= listing["description"]%></p>
+
+<form action="/user/listings" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name = "id" value= <%= listing["id"]%> >
+    <button>delete</button>
+</form>
+<a href="/user/listings/<%=listing["id"]%>/edit">Edit ad</a>

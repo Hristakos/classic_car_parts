@@ -7,10 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<form action="/listings/new">
-  <button>Create Add</button>
-</form>
+<a href="/">all listings</a>
+<% if logged_in? %>
+  <p> logged in as <%= current_user["email"]%> </p>
+  <a href="/user/listings"> My Listings</a>
 
+  <form action="/logout" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>logout</button>
+  </form>
+  <% if request.path_info != '/user/listings/new'%>
+  <a href="/user/listings/new">create listing</a>
+  <% end%>
+<% else %>
+  <% if request.path_info != '/login' %>
+    <a href="/login">login</a>
+  <%end%>
+  <% if request.path_info != '/register'%>
+    <a href="/register">register</a>
+  <%end%>
+<%end%>
   <%= yield %>
 
 </body>
