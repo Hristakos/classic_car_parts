@@ -1,5 +1,6 @@
 <h1>Listings</h1>
 
 <% listings.each do |listing|%>
-    <h1><%= listing["headline"] %></h1>
+   <div> <a href="/listings/<%= listing["id"]%>"><%= listing["headline"] %></a></div>
 <% end%>
+

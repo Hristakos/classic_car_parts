@@ -5,8 +5,8 @@ def run_sql(sql,params)
     records
 end
 
-def create_listing(headline)
-    run_sql("insert into listings(headline)values ($1);",[headline])
+def create_listing(headline, description)
+    run_sql("insert into listings(headline,description)values ($1, $2);",[headline, description])
 end
 
 def all_listings()
