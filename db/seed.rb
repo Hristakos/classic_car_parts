@@ -11,7 +11,9 @@ CREATE TABLE listings
     headline Text,
     description Text,
     user_id Integer,
-    suburb TEXT
+    suburb TEXT,
+    post_date timestamp,
+    price money
 );",[])
 
 run_sql("
@@ -56,7 +58,9 @@ end
     "listing number #{n}", 
     "description #{n}",
     n,
-    suburbs.sample
+    suburbs.sample,
+    Time.now - n * 100000,
+    12.50 * n
 
   )
 end

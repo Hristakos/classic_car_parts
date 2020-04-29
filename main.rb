@@ -57,13 +57,22 @@ end
 
 post '/user/listings' do
   redirect "/login" unless logged_in?
-  create_listing(params[:headline],params[:description],current_user["id"],params[:suburb])
+  create_listing(params[:headline],
+                        params[:description],
+                        current_user["id"],
+                        params[:suburb],
+                        Time.now,
+                        params[:price])
   redirect '/user/listings'
 end
 
 patch '/user/listings' do
   redirect "/login" unless logged_in?
-  update_listing(params[:id], params[:headline], params[:description],params[:suburb])
+  update_listing(params[:id],
+                params[:headline],
+                params[:description],
+                params[:suburb],
+                params[:price])
   redirect '/user/listings'
 end
 

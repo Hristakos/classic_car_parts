@@ -2,6 +2,8 @@
 
 <% listings.each do |listing|%>
    <div> <a href="/listings/<%= listing["id"]%>"><%= listing["headline"] %></a>
-         <%= listing["suburb"]%></div>
+        <p>suburb: <%= listing["suburb"]%></p>
+        <p> post date: <%= DateTime.parse(listing["post_date"]).ctime%></p>
+        <p> price: <%= listing["price"]%></p></div>
 <% end%>
 

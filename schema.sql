@@ -6,7 +6,8 @@ CREATE TABLE listings
     headline Text,
     description Text,
     user_id Integer,
-    suburb Text
+    suburb Text,
+    post_date timestamp
 );
 
 CREATE TABLE users
