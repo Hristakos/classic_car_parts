@@ -5,8 +5,8 @@ def run_sql(sql,params)
     records
 end
 
-def create_listing(headline, description, user_id)
-    run_sql("insert into listings(headline,description,user_id)values ($1, $2, $3);",[headline, description,user_id])
+def create_listing(headline, description, user_id, suburb)
+    run_sql("insert into listings(headline,description,user_id,suburb)values ($1, $2, $3, $4);",[headline, description,user_id,suburb])
 end
 
 def all_listings()
@@ -32,8 +32,8 @@ def find_a_user_listing_by_ids(id, user_id)
     end
 end
 
-def update_listing(id, headline, description)
-    run_sql("update listings set headline = $1, description = $2 where id = $3;",[headline,description,id])
+def update_listing(id, headline, description,suburb)
+    run_sql("update listings set headline = $1, description = $2,suburb = $3 where id = $4;",[headline,description,suburb,id])
 end
 
 def delete_listing(id)

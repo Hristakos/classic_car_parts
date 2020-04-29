@@ -2,6 +2,8 @@
 
 <p><%= listing["description"]%></p>
 
+<p><%= listing["suburb"]%> </p>
+
 <form action="/user/listings" method="post">
     <input type="hidden" name="_method" value="delete">
     <input type="hidden" name = "id" value= <%= listing["id"]%> >

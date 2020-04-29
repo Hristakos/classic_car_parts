@@ -57,36 +57,35 @@ end
 
 post '/user/listings' do
   redirect "/login" unless logged_in?
-  create_listing(params[:headline],params[:description],current_user["id"])
-  redirect '/user/'
+  create_listing(params[:headline],params[:description],current_user["id"],params[:suburb])
+  redirect '/user/listings'
 end
 
 patch '/user/listings' do
   redirect "/login" unless logged_in?
-  update_listing( params[:id], params[:headline], params[:description])
-  redirect '/user/'
+  update_listing(params[:id], params[:headline], params[:description],params[:suburb])
+  redirect '/user/listings'
 end
 
 delete '/user/listings' do
   redirect "/login" unless logged_in?
   delete_listing(params[:id])
-  redirect '/user'
+  redirect '/user/listings'
 end
 
 get '/login' do
-    
+   
   erb(:login)
 end
 
 post '/login' do
 
   user = find_a_user_by_email(params[:email])
-
   if user && BCrypt::Password.new(user["password_digest"]) == params[:password]
       session[:user_id] = user["id"]
       redirect "/"
   else
-      erb(:login)
+    erb(:login)
   end
 
 end
@@ -97,15 +96,21 @@ delete '/logout' do
 end
 
 get '/register' do
-  erb(:register)
+  msg = nil
+  erb(:register, locals:{msg:msg})
 end
 
 post '/register' do
-  create_user(params[:email], params[:password])
+  user = find_a_user_by_email(params[:email])
+  if user  
+    msg = "user with email: #{params[:email]} already exists."
+    return erb(:register, locals:{msg: msg })
+  end
+  create_user(params[:name],params[:email], params[:password])
   user = find_a_user_by_email(params[:email])
   if user
     session[:user_id] = user["id"]
-    redirect '/user/'
+    redirect '/'
   end
   redirect '/register'
 end
