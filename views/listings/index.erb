@@ -1,5 +1,18 @@
 <h1>My Listings</h1>
 
+<form action="/">
+<label for="">Description</label>
+<input type="text" name="headline" value='<%= headline%>'>
+<label for="">Relevance</label>
+<select name="relevance">
+      <option value="post_date desc" <% if sort_query == "post_date desc"%> selected <% end%>>Newest</option>
+      <option value="post_date asc" <% if sort_query  == "post_date asc"%> selected <% end%>>Oldest</option>
+      <option value="price asc" <% if sort_query  == "price asc"%> selected <% end%>>Cheapest</option>
+      <option value="price desc" <% if sort_query  == "price desc"%> selected <% end%>>Expensive</option>
+</select>
+<button>search</button>
+</form>
+
 <% listings.each do |listing|%>
    <div> <a href="/user/listings/<%= listing["id"]%>"><%= listing["headline"] %></a>
    <img src=<%= listing["img_url"]%> alt="">

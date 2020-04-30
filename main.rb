@@ -10,18 +10,35 @@ require_relative 'lib'
 enable :sessions
 
 get '/' do
-  listings = all_listings
-  erb(:index, locals: {listings:listings})
+  headline_query = ""
+  sort_query = "price asc"
+
+
+  if params[:headline] || params[:relevance]
+    headline_query = params[:headline]
+    sort_query = params[:relevance]
+    # raise(headline_query + price_query)
+  end
+    listings = all_listings_by_query(headline_query,sort_query)
+ 
+  erb(:index, locals: {listings:listings, headline: headline_query, sort_query:sort_query })
 end
 get '/listings/:id' do
+ 
   listing = find_a_listing_by_id(params[:id])
   erb(:show, locals:{listing:listing})
 end
 get '/user/listings' do
+  headline_query = ""
+  sort_query = "price asc"
+  if params[:headline] || params[:relevance]
+    headline_query = params[:headline]
+    sort_query = params[:relevance]
+  end
   redirect "/login" unless logged_in?
-  listings = all_listings_for_user(current_user["id"])
+  listings = all_listings_for_user_by_query(current_user["id"], headline_query, sort_query)
   
-  erb(:'listings/index', locals:{listings:listings})
+  erb(:'listings/index', locals: {listings:listings, headline: headline_query, sort_query:sort_query })
 end
 
 get '/user/listings/new' do

@@ -67,10 +67,15 @@ def delete_listing(id)
     run_sql("delete from listings where id = $1;",[id])
 end
 
-def all_listings_by_price(search,price_order)
-    search_string = "%#{search}%"
-    price_string = "price #{price_order}"
-    listings = run_sql("select * from listings where headline like $1 order by #{price_string};",[search_string])
+def all_listings_by_query(search,sort_query)
+    search_string = "%#{search}%"  
+    listings = run_sql("select * from listings where headline like $1 order by #{sort_query};",[search_string])
+    listings
+end
+
+def all_listings_for_user_by_query(user_id,search,sort_query)
+    search_string = "%#{search}%"  
+    listings = run_sql("select * from listings where user_id = $1 and headline like $2 order by #{sort_query};",[user_id,search_string])
     listings
 end
 

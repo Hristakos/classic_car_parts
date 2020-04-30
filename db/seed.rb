@@ -50,19 +50,25 @@ suburbs = ["Ascot Vale",
           "Williamstown",
           "Yarraville"]
 # create 10 dummy users
+
+makes = ["Ford", "Holden","Chrysler"]
 (1..10).each do |n|
+
     create_user("user#{n} name ","user#{n}@gmail.com","pudding#{n}")
-end
+    puts "created user #{n}...."
+  end
 # create 10 dummy listings
 (1..10).each do |n|
   create_listing(
-    "listing number #{n}", 
+    "#{makes.sample} number #{n}", 
     "description #{n}",
     n,
     suburbs.sample,
-    Time.now - n * 100000,
-    12.50 * n,
+    Time.now - n * [100000,2000000,300000,700000, 250000, 7700000].sample,
+    12.50 * n * [5,25,15,2,6,78].sample,
     "/Users/peterhristakos/Downloads/background.png"
   )
-  puts "#{n} done...."
+  puts "created listing #{n}...."
 end
+
+puts "done"

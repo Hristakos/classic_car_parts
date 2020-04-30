@@ -1,10 +1,19 @@
-<h1>All Listings</h1>
+<h1>Listings</h1>
 <%# <div > %>
 
-<%# <form action="/">
-<label for=""></label>
-<input type="text" name="headline">
-</form> %>
+<form action="/">
+<label for="">Description</label>
+<input type="text" name="headline" value='<%= headline%>'>
+<label for="">Relevance</label>
+<select name="relevance">
+        <option value="post_date desc" <% if sort_query == "post_date desc"%> selected <% end%>>Newest</option>
+        <option value="post_date asc" <% if sort_query  == "post_date asc"%> selected <% end%>>Oldest</option>
+        <option value="price asc" <% if sort_query  == "price asc"%> selected <% end%>>Cheapest</option>
+        <option value="price desc" <% if sort_query  == "price desc"%> selected <% end%>>Expensive</option>
+</select>
+<button>search</button>
+</form>
+
 <div class="wrapper">
 <% listings.each do |listing|%>
 
