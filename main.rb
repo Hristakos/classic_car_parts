@@ -1,6 +1,6 @@
      
 require 'sinatra'
-require 'sinatra/reloader'
+require 'sinatra/reloader' if development?
 require 'pg'
 
 require_relative 'models/listing'
@@ -10,7 +10,7 @@ require_relative 'lib'
 enable :sessions
 
 get '/' do
-  listings = all_listings_order_by_lowest_price()
+  listings = all_listings
   erb(:index, locals: {listings:listings})
 end
 get '/listings/:id' do

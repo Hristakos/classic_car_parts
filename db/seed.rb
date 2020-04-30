@@ -64,4 +64,5 @@ end
     12.50 * n,
     "/Users/peterhristakos/Downloads/background.png"
   )
+  puts "#{n} done...."
 end
