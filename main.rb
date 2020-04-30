@@ -10,7 +10,7 @@ require_relative 'lib'
 enable :sessions
 
 get '/' do
-  listings = all_listings
+  listings = all_listings_order_by_lowest_price()
   erb(:index, locals: {listings:listings})
 end
 get '/listings/:id' do
@@ -62,7 +62,8 @@ post '/user/listings' do
                         current_user["id"],
                         params[:suburb],
                         Time.now,
-                        params[:price])
+                        params[:price],
+                        params[:file][:tempfile].path)
   redirect '/user/listings'
 end
 

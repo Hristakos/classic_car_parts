@@ -3,6 +3,7 @@
 <p>description: <%= listing["description"]%></p>
 <p>suburb: <%= listing["suburb"]%></p>
 <p>price: <%= listing["price"]%></p>
+<img src=<%= listing["img_url"]%> alt="">
 
 <form action="/user/listings" method="post">
     <input type="hidden" name="_method" value="delete">

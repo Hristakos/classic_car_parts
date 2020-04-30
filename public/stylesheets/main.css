@@ -1,0 +1,31 @@
+
+img {
+   
+    width: 150px;
+    height: 150px;
+    padding: 0 10px;
+}
+.listings-img {
+   
+    width: 150px;
+    height: 150px;
+    padding: 0 10px;
+}
+
+.listings-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    border: 1px solid black;
+    grid-column-start: 2;
+}
+
+.listings {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: .25fr 1fr .25fr;
+}
+
+.listings-details {
+    display: grid;
+}
+

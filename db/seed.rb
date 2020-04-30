@@ -13,7 +13,8 @@ CREATE TABLE listings
     user_id Integer,
     suburb TEXT,
     post_date timestamp,
-    price money
+    price money,
+    img_url Text
 );",[])
 
 run_sql("
@@ -60,7 +61,7 @@ end
     n,
     suburbs.sample,
     Time.now - n * 100000,
-    12.50 * n
-
+    12.50 * n,
+    "/Users/peterhristakos/Downloads/background.png"
   )
 end

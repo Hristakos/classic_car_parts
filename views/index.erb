@@ -1,9 +1,23 @@
 <h1>All Listings</h1>
-
+<%# <div > %>
 <% listings.each do |listing|%>
-   <div> <a href="/listings/<%= listing["id"]%>"><%= listing["headline"] %></a>
+<a class="listings" href="/listings/<%= listing["id"]%>">
+   <div class="listings-layout"> 
+   
+        <img class= "listings-img"src=<%= listing["img_url"]%> alt="">
+   
+        <div class="listings-details">
+                <%= listing["headline"] %>
+                <p> price: <%= listing["price"]%></p>
+        </div>
+
+        <div>
         <p>suburb: <%= listing["suburb"]%></p>
         <p> post date: <%= DateTime.parse(listing["post_date"]).ctime%></p>
-        <p> price: <%= listing["price"]%></p></div>
+        </div> 
+</div>
+</a>
+       
 <% end%>
+<%# </div> %>
 

@@ -7,7 +7,9 @@ CREATE TABLE listings
     description Text,
     user_id Integer,
     suburb Text,
-    post_date timestamp
+    post_date timestamp,
+    img_url Text
+
 );
 
 CREATE TABLE users
@@ -18,3 +20,5 @@ CREATE TABLE users
     password_digest TEXT
 
 )
+
+
