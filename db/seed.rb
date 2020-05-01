@@ -14,7 +14,8 @@ CREATE TABLE listings
     suburb TEXT,
     post_date timestamp,
     price money,
-    img_url Text
+    img_url Text,
+    messages Text []
 );",[])
 
 run_sql("

@@ -1,8 +1,43 @@
-<h1><%=listing["headline"]%></h1>
 
-<p>description: <%= listing["description"]%></p>
-<p>suburb: <%= listing["suburb"]%></p>
-<p>price: <%= listing["price"]%></p>
-<img src=<%= listing["img_url"]%> alt="">
+
+
+
+
+        
+<div class="listing-wrapper">       
+ 
+<div class="listing-layout">
+
+    <div class="listing-headline"><%=listing["headline"]%></div>
+    <div class="listing-price"><%= listing["price"]%></div>
+ 
+ 
+    <img class= "listing-img" src=<%= listing["img_url"]%> alt="">
+    <div class="listing-details">
+      
+        <div class="listing-description"><p>description: <%= listing["description"]%></p></div>
+     
+        
+    </div>
+       <div class="listing-suburb"><%= listing["suburb"]%></div>
+</div>
+
+<div class="contact-area">
+Seller name is <% name = find_a_user_by_id(listing["user_id"])["name"]%> <%= name%>
+seller contact email is <%= find_a_user_by_id(listing["user_id"])["email"]%>
+Listing posted on <% listing_date = listing_timestamp_to_display(listing["post_date"])%><%=listing_date%>
+
+<form action="/listings/messages" method="post">
+<input type="hidden" name="listing_id" value=<%=listing["id"]%>>
+<textarea class="contact-msg-area"name="contact_msg" id="" cols="30" rows="10">
+Hi <%= name%>, you posted an ad for <%= listing["headline"]%> on <%= listing_date%> is it still for sale?
+</textarea>
+<label for="">Enter your Name</label>
+<input type="text" name="potential_buyer_name">
+<label for="">Best Contact</label>
+<input type="text" name="potential_buyer_best_contact">
+<button>send message</button>
+</form>
+</div> 
 
 

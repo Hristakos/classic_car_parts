@@ -1,12 +1,12 @@
 body {
     background-color: #f4f4f4;
 }
-img {
+/* img {
    
     width: 150px;
     height: 150px;
     padding: 0 10px;
-}
+} */
 .listings-img {
    
     width: 150px;
@@ -23,7 +23,7 @@ img {
     grid-template-columns: 1fr 2fr 1fr;
     grid-column-start: 2;
     height: 150px;
-    overflow: hidden;
+    
 }
 
 .listings {
@@ -38,6 +38,7 @@ img {
     grid-template-rows: .25fr  .75fr;
     height: 150px;
     margin: 10px;
+    overflow: hidden;
 }
 .listing-heading {
     display: grid;
@@ -48,6 +49,9 @@ img {
 .price {
     color: green;
     
+}
+.listings-description {
+    overflow: hidden;
 }
 .listings-suburb-date {
     display: grid;
@@ -65,3 +69,76 @@ img {
     grid-row-start: 3;
     color: grey
 }
+.listing-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-gap: 10px;
+}
+.listing-layout {
+    display: grid;
+
+    grid-template-rows: .1fr .1fr 2fr 1fr .1fr;
+    background-color: white;
+
+}
+.listing-details {
+    display: grid;
+    grid-row-start: 4;
+}
+.listing-img {
+    grid-row-start: 3;
+    width: 90%;
+    height: 90%;
+    padding: 5%;
+}
+.listing {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: .25fr 1fr .25fr;
+    color: black;
+}
+.listing-top-row-layout {
+    display: grid;
+    grid-template-columns: 1fr .2fr;
+}
+.listing-headline {
+    padding: 3%;
+    text-align: center;
+    text-transform: uppercase;
+}
+.listing-price {
+    padding: 3%;
+    color: green;
+    grid-row-start: 2;
+    text-align: center;
+ 
+}
+.listing-description {
+    padding: 3% 5%;
+    height: 125px;
+    overflow: scroll;
+    background-color: #f4f4f4;
+    border: solid white;
+   
+}
+.listing-suburb {
+    text-align: center;
+    color: orange;
+}
+
+.contact-area {
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    padding: 0 10%;
+    background-color: white;
+}
+.contact-msg-area {
+    grid-row-start: 2;
+    width: 80%;
+    height: 40%;
+    padding: 10%;
+  
+
+}
+
+

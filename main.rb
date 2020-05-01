@@ -29,16 +29,16 @@ get '/listings/:id' do
   erb(:show, locals:{listing:listing})
 end
 get '/user/listings' do
-  headline_query = ""
-  sort_query = "price asc"
-  if params[:headline] || params[:relevance]
-    headline_query = params[:headline]
-    sort_query = params[:relevance]
-  end
+  # headline_query = ""
+  # sort_query = "price asc"
+  # if params[:headline] || params[:relevance]
+  #   headline_query = params[:headline]
+  #   sort_query = params[:relevance]
+  # end
   redirect "/login" unless logged_in?
-  listings = all_listings_for_user_by_query(current_user["id"], headline_query, sort_query)
+  listings = all_listings_for_user(current_user["id"])
   
-  erb(:'listings/index', locals: {listings:listings, headline: headline_query, sort_query:sort_query })
+  erb(:'listings/index', locals: {listings:listings})
 end
 
 get '/user/listings/new' do
@@ -140,6 +140,12 @@ post '/register' do
     redirect '/'
   end
   redirect '/register'
+end
+
+post '/listings/messages' do
+  
+  add_message_to_listing(params[:listing_id], params[:contact_msg])
+  redirect "/"
 end
 
 

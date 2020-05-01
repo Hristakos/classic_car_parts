@@ -73,6 +73,10 @@ def all_listings_by_query(search,sort_query)
     listings
 end
 
+def all_listings_for_user(user_id)
+    listings = run_sql("select * from listings where user_id = $1;",[user_id])
+    listings
+end
 def all_listings_for_user_by_query(user_id,search,sort_query)
     search_string = "%#{search}%"  
     listings = run_sql("select * from listings where user_id = $1 and headline like $2 order by #{sort_query};",[user_id,search_string])
@@ -85,3 +89,20 @@ def all_listings_by_suburb(search,suburb_order)
     listings = run_sql("select * from listings where headline like $1 order by #{suburb_string};",[search_string])
     listings
 end
+
+def add_message_to_listing(listing_id, message)
+
+    run_sql( "update listings set messages =  array_append(messages, $1) where id = $2;",[message,listing_id])
+
+end
+
+def retrieve_messages_for_listing(listing_id)
+    messages = run_sql('select messages from listings where id = $1;',[listing_id])
+    if messages[0]["messages"]
+       return messages[0]["messages"].gsub(/[{}"]/,"").chomp().split(",")
+    end
+
+    nil
+end
+
+

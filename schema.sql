@@ -8,7 +8,8 @@ CREATE TABLE listings
     user_id Integer,
     suburb Text,
     post_date timestamp,
-    img_url Text
+    img_url Text,
+    messages Text []
 
 );
 
