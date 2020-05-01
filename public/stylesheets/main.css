@@ -1,12 +1,10 @@
 body {
     background-color: #f4f4f4;
 }
-/* img {
-   
-    width: 150px;
-    height: 150px;
-    padding: 0 10px;
-} */
+h1 {
+    text-align: center;
+    color: green;
+}
 .listings-img {
    
     width: 150px;
@@ -171,7 +169,7 @@ nav{
 }
 .logout-btn {
    
-    background-color:orange; /* Green */
+    background-color:orange; 
     border: none;
     color: white;
     text-align: center;
@@ -188,4 +186,37 @@ nav{
   
 }
 
+.search-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr .5fr;
+    grid-column-start: 2;
+}
+.search-description {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+.search-relevance {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.search-layout {
+    display: grid;
+    grid-template-columns: .25fr 1fr .25fr;
+    
+}
+.search-btn-layout {
+    text-align: center;
+}
+.search-btn {
+   
+    background-color:orange; 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
 
