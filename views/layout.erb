@@ -10,26 +10,35 @@
 
 </head>
 <body>
-<a href="/">all listings</a>
+<nav>
+<a class="all-listings nav-bar" href="/">all listings</a>
 <% if logged_in? %>
-  <p> logged in as <%= current_user["email"]%> </p>
-  <a href="/user/listings"> My Listings</a>
 
-  <form action="/logout" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button>logout</button>
-  </form>
+  <a class="my-listings nav-bar"href="/user/listings"> My Listings</a>
+
   <% if request.path_info != '/user/listings/new'%>
-  <a href="/user/listings/new">create listing</a>
+  <a class="create-listing nav-bar"href="/user/listings/new">create listing</a>
+  
+      <form class= "logout nav-bar"action="/logout" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="logout-btn">logout</button>
+  </form>
   <% end%>
+
+
+
 <% else %>
   <% if request.path_info != '/login' %>
-    <a href="/login">login</a>
+    <a class="login nav-bar" href="/login">login</a>
   <%end%>
   <% if request.path_info != '/register'%>
-    <a href="/register">register</a>
+    <a class="register nav-bar"href="/register">register</a>
   <%end%>
+
+
+   
 <%end%>
+</nav>
 
 
 

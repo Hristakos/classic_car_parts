@@ -141,4 +141,51 @@ body {
 
 }
 
+nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr .5fr .5fr .5fr;
+    text-align: center;
+    background-color: orange;
+    
+}
+.nav-bar {
+    text-decoration: none;
+ 
+    color: white;
+    text-transform: uppercase;
+}
+.all-listings {
+    grid-column-start: 1;
+
+}
+.my-listings {
+    grid-column-start: 2;
+    
+}
+.create-listing {
+    grid-column-start: 3;
+   
+}
+.logout{
+    grid-column-start: 6;
+}
+.logout-btn {
+   
+    background-color:orange; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+   
+}
+.login {
+    grid-column-start: 4;
+   
+}
+.register {
+    grid-column-start: 5;
+  
+}
+
 
