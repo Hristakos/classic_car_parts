@@ -1,10 +1,19 @@
-<h1>login</h1>
+
+
+ <div class="login-register-form-layout">
  
-<form action="/login" method="post">
-    <label for="">email</label>
-    <input type="text" name="email">
-    <label for="">password</label>
-    <input type="password" name="password">
-    <button>login</button>
+<form class="login-form-detail" action="/login" method="post">
+<p class="login-register-message"><%=msg%></p>
+  <div class="input-container">
+    <i class="fa fa-envelope icon"></i>
+    <input class="input-field" type="text" placeholder="Email" name="email">
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Password" name="password">
+  </div>
+    <button class="login-register-form-button ">login</button>
 </form>
+</div>
 

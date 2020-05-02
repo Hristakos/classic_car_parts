@@ -18,3 +18,24 @@ def find_a_user_by_email(email)
         return records[0]
     end
 end
+
+def register_input_validate(name, email, password)
+    msg = nil
+    if name.size < 3
+       msg = "name must be at least 3 characters long"
+    elsif email.size < 5 
+        msg = "email must be at least 5 characters long"
+    elsif password.size < 7
+        msg = "password must be at least 7 characters long"
+    end
+    
+    if msg 
+        return error = {name: name,
+                      email: email,
+                      password: password,
+                      message: msg
+                    }       
+    else
+        return nil
+    end
+end

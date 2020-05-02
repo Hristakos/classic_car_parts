@@ -1,13 +1,28 @@
-<h1>Register</h1>
-<% if msg    %>
-    <p><%=msg%></p>
-<% end%>   
-<form action="/register" method="post">
-    <label for="">name</label>
-    <input type="text" name="name">
-    <label for="">email</label>
-    <input type="text" name="email">
-    <label for="">password</label>
-    <input type="password" name="password">
-    <button>Resgister</button>
+
+<% if error 
+        msg = error[:message]
+    else
+        msg = ""
+ end%> 
+
+ <div class="login-register-form-layout">
+ <p class="login-register-message"><%=msg%></p>
+<form class="login-form-detail" action="/register" method="post">
+
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Name" name="name" <%if error %> value = '<%=error[:name]%>' <%end%>>
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-envelope icon"></i>
+    <input class="input-field" type="text" placeholder="Email" name="email" <%if error %> value = '<%=error[:email]%>' <%end%>>
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Password" name="password" <%if error %> value = '<%=error[:password]%>' <%end%>>
+  </div>
+    <button class="login-register-form-button ">register</button>
 </form>
+</div>

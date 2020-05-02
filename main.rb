@@ -101,8 +101,7 @@ delete '/user/listings' do
 end
 
 get '/login' do
-   
-  erb(:login)
+  erb(:login, locals:{msg:""})
 end
 
 post '/login' do
@@ -112,7 +111,8 @@ post '/login' do
       session[:user_id] = user["id"]
       redirect "/"
   else
-    erb(:login)
+    msg = "check details try again"
+    erb(:login, locals: {msg: msg})
   end
 
 end
@@ -123,11 +123,16 @@ delete '/logout' do
 end
 
 get '/register' do
-  msg = nil
-  erb(:register, locals:{msg:msg})
+  error = nil
+  erb(:register, locals:{error:error})
 end
 
 post '/register' do
+  error = register_input_validate(params[:name], params[:email], params[:password])
+
+  if error 
+    return erb(:register, locals:{error: error })
+  end
   user = find_a_user_by_email(params[:email])
   if user  
     msg = "user with email: #{params[:email]} already exists."
