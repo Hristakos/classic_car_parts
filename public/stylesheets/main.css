@@ -98,7 +98,6 @@ h1 {
 }
 .listing-layout {
     display: grid;
-
     grid-template-rows: .1fr .1fr 2fr 1fr .1fr;
     background-color: white;
 
@@ -150,7 +149,7 @@ h1 {
 
 .contact-area {
     display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
+    /* grid-template-rows: 1fr 2fr 1fr; */
     padding: 0 10%;
     background-color: white;
 }
@@ -160,6 +159,24 @@ h1 {
     height: 40%;
     padding: 10%;
 }
+@media screen and (min-width: 800px){
+    .listing-wrapper {
+        grid-template-columns: .25fr 1.5fr 1fr .25fr;
+    }
+    .listing-layout {
+        grid-column-start: 2;
+    }
+
+}
+@media screen and (min-width: 1200px){
+    .listing-wrapper {
+        grid-template-columns: .5fr 1.5fr 1fr .5fr;
+    }
+    .listing-layout {
+        grid-column-start: 2;
+    }
+}
+
 
 nav{
     display: grid;
