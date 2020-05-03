@@ -15,6 +15,13 @@ h1 {
     height: 100%;
     padding: 10px;
 }
+@media screen and (max-width: 500px){
+    .listings-img {
+        height: 150px;
+    }
+
+}
+
 .wrapper {
     display: grid;
     grid-gap: 10px;
@@ -26,12 +33,28 @@ h1 {
     
 }
 
+
 .listings {
     text-decoration: none;
     display: grid;
     color: black;
 }
 
+@media screen and (min-width: 800px){
+    .wrapper{
+        grid-template-columns: .25fr 1fr .25fr;
+    }
+    .listings {
+        grid-column-start: 2;
+    }
+    .search-layout {
+        grid-template-columns: .25fr 1fr .25fr;
+    }
+    .search-bar {
+        grid-column-start: 2;
+    }
+
+}
 .listings-details {
     display: grid;
     grid-template-rows: .25fr .25fr .5fr;
@@ -243,6 +266,13 @@ nav{
 
 }
 
+@media screen and (min-width: 800px){
+    .login-register-form-layout {
+        width: 60%;
+        margin: 0 20%;
+    }
+
+}
 .input-container {
     display: flex;
     width: 100%;
