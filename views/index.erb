@@ -2,12 +2,12 @@
 
 <div class="search-layout">
 <form class="search-bar"action="/">
-<div class="search-description ">
-<label for="">Headline</label>
-<input type="text" name="headline" value='<%= headline%>'>
-</div>
-<div class="search-relevance ">
-<label for="">Relevance</label>
+  <div class="input-container">
+    <i class="fa fa-search icon"></i>
+    <input class="input-field" type="text" placeholder="Enter search" name="headline"  value='<%= headline%>'>
+  </div>
+
+<div class="select">
 <select name="relevance">
         <option value="post_date desc" <% if sort_query == "post_date desc"%> selected <% end%>>Newest</option>
         <option value="post_date asc" <% if sort_query  == "post_date asc"%> selected <% end%>>Oldest</option>
@@ -32,8 +32,9 @@
                         <div class="listings-details">
                                 <div class="listing-heading"> <%= listing["headline"] %> 
                                 
-                                <div class="price"> <%= listing["price"]%></div>
+                                
                                 </div>
+                                <div class="price"> <%= listing["price"]%></div>
                                 <div class="listings-description"><%= listing["description"]%> </div>
                         </div>
 
