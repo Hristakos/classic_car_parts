@@ -27,15 +27,20 @@
         <textarea class="contact-msg-area"name="contact_msg" id="" cols="30" rows="10">Hi <%= name%>, you posted an ad for <%= listing["headline"]%> on <%= listing_date%> is it still for sale?
         </textarea>
         <div class="message-contact-details">
+        <div class="login-register-message">
+            <%if error%>
+                <p> <%=error[:message]%></p> 
+            <% end %>
+        </div>
             <div class="input-container">
                 <i class="fa fa-user icon"></i>
-                <input class="input-field" type="text" placeholder="Contact Name" name="potential_buyer_name">
+                <input class="input-field" type="text" placeholder="Contact Name" name="potential_buyer_name" <%if error %> value = '<%=error[:name]%>' <%end%>>
             </div>
 
             <div class="input-container">
         
                 <i class="fa fa-phone icon"></i>
-                <input class="input-field" type="text" placeholder="Best contact" name="potential_buyer_best_contact">
+                <input class="input-field" type="text" placeholder="Best contact" name="potential_buyer_best_contact" <%if error %> value = '<%=error[:best_contact]%>'<%end%>>
             </div>
             <div class="message-btn-layout">
                 <button class="message-btn">send</button>

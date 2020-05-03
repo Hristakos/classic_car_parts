@@ -153,6 +153,16 @@ h1 {
     align-items: center;
     background-color: white;
     padding: 10%;
+    word-wrap: break-word;
+}
+.seller-name {
+    width: 100%;
+}
+.seller-email {
+    width: 100%;
+}
+.listing-date {
+    width: 100%;
 }
 .seler-info-color{
     color: green;

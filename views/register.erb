@@ -3,27 +3,26 @@
         msg = error[:message]
     else
         msg = ""
- end%> 
+    end
+ %> 
+
 <div class="login-register-form-wrapper">
- <div class="login-register-form-layout">
- <p class="login-register-message"><%=msg%></p>
-<form class="login-form-detail" action="/register" method="post">
-
-  <div class="input-container">
-    <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" placeholder="Name" name="name" <%if error %> value = '<%=error[:name]%>' <%end%>>
-  </div>
-
-  <div class="input-container">
-    <i class="fa fa-envelope icon"></i>
-    <input class="input-field" type="text" placeholder="Email" name="email" <%if error %> value = '<%=error[:email]%>' <%end%>>
-  </div>
-
-  <div class="input-container">
-    <i class="fa fa-key icon"></i>
-    <input class="input-field" type="password" placeholder="Password" name="password" <%if error %> value = '<%=error[:password]%>' <%end%>>
-  </div>
-    <button class="login-register-form-button ">register</button>
-</form>
-</div>
+    <div class="login-register-form-layout">
+        <p class="login-register-message"><%=msg%></p>
+        <form class="login-form-detail" action="/register" method="post">
+            <div class="input-container">
+                <i class="fa fa-user icon"></i>
+                <input class="input-field" type="text" placeholder="Name" name="name" <%if error %> value = '<%=error[:name]%>' <%end%>>
+            </div>
+            <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                <input class="input-field" type="text" placeholder="Email" name="email" <%if error %> value = '<%=error[:email]%>' <%end%>>
+            </div>
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                <input class="input-field" type="password" placeholder="Password" name="password" <%if error %> value = '<%=error[:password]%>' <%end%>>
+            </div>
+                <button class="login-register-form-button ">register</button>
+        </form>
+    </div>
 </div>

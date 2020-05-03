@@ -105,4 +105,21 @@ def retrieve_messages_for_listing(listing_id)
     nil
 end
 
+def potential_buyer_input_validate(name, best_contact)
+    msg = nil
+    if name.size < 3
+       msg = "name must be at least 3 characters long"
+    elsif best_contact.size < 10 
+        msg = "best contact must be at least 10 characters long"
+    end
+    
+    if msg 
+        return error = {name: name,
+                      best_contact: best_contact,
+                      message: msg
+                    }       
+    else
+        return nil
+    end
+end
 

@@ -1,29 +1,27 @@
 <h1>Listings</h1>
-
 <div class="search-layout">
 <form class="search-bar"action="/">
-  <div class="input-container">
-    <i class="fa fa-search icon"></i>
-    <input class="input-field" type="text" placeholder="Enter search" name="headline"  value='<%= headline%>'>
-  </div>
-
-<div class="select">
-<select name="relevance">
-        <option value="post_date desc" <% if sort_query == "post_date desc"%> selected <% end%>>Newest</option>
-        <option value="post_date asc" <% if sort_query  == "post_date asc"%> selected <% end%>>Oldest</option>
-        <option value="price asc" <% if sort_query  == "price asc"%> selected <% end%>>Cheapest</option>
-        <option value="price desc" <% if sort_query  == "price desc"%> selected <% end%>>Expensive</option>
-</select>
-</div>
-<div class="search-btn-layout">
-<button class="search-btn">search</button>
-</div>
+        <div class="input-container">
+        <i class="fa fa-search icon"></i>
+        <input class="input-field" type="text" placeholder="Enter search" name="headline"  value='<%= headline%>'>
+        </div>
+        <div class="select">
+        <select name="relevance">
+                <option value="post_date desc" <% if sort_query == "post_date desc"%> selected <% end%>>Newest</option>
+                <option value="post_date asc" <% if sort_query  == "post_date asc"%> selected <% end%>>Oldest</option>
+                <option value="price asc" <% if sort_query  == "price asc"%> selected <% end%>>Cheapest</option>
+                <option value="price desc" <% if sort_query  == "price desc"%> selected <% end%>>Expensive</option>
+        </select>
+        </div>
+        <div class="search-btn-layout">
+        <button class="search-btn">search</button>
+        </div>
 
 </form>
+
 </div>
 <div class="wrapper">
         <% listings.each do |listing|%>
-
         <a class="listings" href="/listings/<%= listing["id"]%>">
                 <div class="listings-layout"> 
         
@@ -49,5 +47,5 @@
         <% end%>
 </div>
      
-<%# </div> %>
+
 

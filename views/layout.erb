@@ -1,48 +1,34 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Classic Car Parts</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel='stylesheet' href='/stylesheets/main.css'>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-</head>
-<body>
-<nav>
-<a class="all-listings nav-bar" href="/">all listings</a>
-<% if logged_in? %>
-
-  <a class="my-listings nav-bar"href="/user/listings"> My Listings</a>
-
-  <% if request.path_info != '/user/listings/new'%>
-  <a class="create-listing nav-bar"href="/user/listings/new">create listing</a>
-  
-      <form class= "logout nav-bar"action="/logout" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button class="logout-btn">logout</button>
-  </form>
-  <% end%>
-
-
-
-<% else %>
-  <% if request.path_info != '/login' %>
-    <a class="login nav-bar" href="/login">login</a>
-  <%end%>
-  <% if request.path_info != '/register'%>
-    <a class="register nav-bar"href="/register">register</a>
-  <%end%>
-
-
-   
-<%end%>
-</nav>
-
-
-
-  <%= yield %>
-
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Classic Car Parts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/main.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <nav>
+        <a class="all-listings nav-bar" href="/">all listings</a>
+      <% if logged_in? %>
+        <a class="my-listings nav-bar"href="/user/listings"> My Listings</a>
+      <% if request.path_info != '/user/listings/new'%>
+        <a class="create-listing nav-bar"href="/user/listings/new">create listing</a>
+        <form class= "logout nav-bar"action="/logout" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button class="logout-btn">logout</button>
+        </form>
+      <%  end
+          else   
+            if request.path_info != '/login' %>
+              <a class="login nav-bar" href="/login">login</a>
+            <%end%>
+          <% if request.path_info != '/register'%>
+              <a class="register nav-bar"href="/register">register</a>
+            <%end%>
+        <%end%>
+    </nav>
+    
+    <%= yield %>
+  </body>
 </html>

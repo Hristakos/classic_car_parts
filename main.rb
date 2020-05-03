@@ -13,28 +13,21 @@ get '/' do
   headline_query = ""
   sort_query = "price asc"
 
-
   if params[:headline] || params[:relevance]
     headline_query = params[:headline]
     sort_query = params[:relevance]
-    # raise(headline_query + price_query)
+ 
   end
     listings = all_listings_by_query(headline_query,sort_query)
  
   erb(:index, locals: {listings:listings, headline: headline_query, sort_query:sort_query })
 end
 get '/listings/:id' do
- 
+  error = nil
   listing = find_a_listing_by_id(params[:id])
-  erb(:show, locals:{listing:listing})
+  erb(:show, locals:{listing:listing, error:error})
 end
 get '/user/listings' do
-  # headline_query = ""
-  # sort_query = "price asc"
-  # if params[:headline] || params[:relevance]
-  #   headline_query = params[:headline]
-  #   sort_query = params[:relevance]
-  # end
   redirect "/login" unless logged_in?
   listings = all_listings_for_user(current_user["id"])
   
@@ -148,8 +141,14 @@ post '/register' do
 end
 
 post '/listings/messages' do
-  
-  add_message_to_listing(params[:listing_id], params[:contact_msg])
+  error = potential_buyer_input_validate(params[:potential_buyer_name], params[:potential_buyer_best_contact])
+
+  if error 
+    listing = find_a_listing_by_id(params[:listing_id])
+    return  erb(:show, locals:{listing:listing, error:error})
+  end
+  msg = "#{params[:contact_msg]} msg sent by #{params[:potential_buyer_name]}, best contact is #{params[:potential_buyer_best_contact]}"
+  add_message_to_listing(params[:listing_id], msg)
   redirect "/"
 end
 
