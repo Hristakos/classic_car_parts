@@ -1,43 +1,47 @@
-
-
-
-
-
-        
 <div class="listing-wrapper">       
- 
-<div class="listing-layout">
-
-    <div class="listing-headline"><%=listing["headline"]%></div>
-    <div class="listing-price"><%= listing["price"]%></div>
- 
- 
-    <img class= "listing-img" src=<%= listing["img_url"]%> alt="">
-    <div class="listing-details">
-      
-        <div class="listing-description"><p>description: <%= listing["description"]%></p></div>
-     
-        
+    <div class="listing-layout">
+        <div class="listing-headline"><%=listing["headline"]%></div>
+        <div class="listing-price"><%= listing["price"]%></div>
+        <img class= "listing-img" src=<%= listing["img_url"]%> alt="">
+        <div class="listing-details">
+            <div class="listing-description"><p>description: <%= listing["description"]%></p></div>
+        </div>
+        <div class="listing-suburb"><%= listing["suburb"]%></div>
     </div>
-       <div class="listing-suburb"><%= listing["suburb"]%></div>
-</div>
 
-<div class="contact-area">
-Seller name is <% name = find_a_user_by_id(listing["user_id"])["name"]%> <%= name%>
-seller contact email is <%= find_a_user_by_id(listing["user_id"])["email"]%>
-Listing posted on <% listing_date = listing_timestamp_to_display(listing["post_date"])%><%=listing_date%>
+    <div class="contact-area">
+        <div class="seller-informatoin">
+            <div class="seller-name">
+                seller name: <span class="seler-info-color"><% name = find_a_user_by_id(listing["user_id"])["name"]%> <%= name%></span>
+            </div>
+            <div class="seller-email">
+                seller email: <span class="seler-info-color" ><%= find_a_user_by_id(listing["user_id"])["email"]%></span>
+            </div>
+            <div class="listing-date">
+                posted on: <span class="seler-info-color"><% listing_date = listing_timestamp_to_display(listing["post_date"])%><%=listing_date%></span>
+            </div>
+        </div>
+    
+    <form class="contact-form" action="/listings/messages" method="post">
+        <input type="hidden" name="listing_id" value=<%=listing["id"]%>>
+        <textarea class="contact-msg-area"name="contact_msg" id="" cols="30" rows="10">Hi <%= name%>, you posted an ad for <%= listing["headline"]%> on <%= listing_date%> is it still for sale?
+        </textarea>
+        <div class="message-contact-details">
+            <div class="input-container">
+                <i class="fa fa-user icon"></i>
+                <input class="input-field" type="text" placeholder="Contact Name" name="potential_buyer_name">
+            </div>
 
-<form action="/listings/messages" method="post">
-<input type="hidden" name="listing_id" value=<%=listing["id"]%>>
-<textarea class="contact-msg-area"name="contact_msg" id="" cols="30" rows="10">
-Hi <%= name%>, you posted an ad for <%= listing["headline"]%> on <%= listing_date%> is it still for sale?
-</textarea>
-<label for="">Enter your Name</label>
-<input type="text" name="potential_buyer_name">
-<label for="">Best Contact</label>
-<input type="text" name="potential_buyer_best_contact">
-<button>send message</button>
-</form>
+            <div class="input-container">
+        
+                <i class="fa fa-phone icon"></i>
+                <input class="input-field" type="text" placeholder="Best contact" name="potential_buyer_best_contact">
+            </div>
+            <div class="message-btn-layout">
+                <button class="message-btn">send</button>
+            </div>
+        </div>
+    </form>
 </div> 
 
 
