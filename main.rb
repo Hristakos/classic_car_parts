@@ -36,7 +36,7 @@ end
 
 get '/user/listings/new' do
   redirect "/login" unless logged_in?
-  erb(:'listings/new')
+  erb(:'listings/new', locals: {error:nil})
 end
 
 get '/user/listings/:id/edit' do
@@ -67,13 +67,30 @@ end
 
 post '/user/listings' do
   redirect "/login" unless logged_in?
-  create_listing(params[:headline],
+  error = create_listing_validation(params[:headline],
+                                    params[:description],
+                                    params[:suburb],
+                                    params[:price])
+
+
+  if error
+    return erb(:'listings/new', locals:{error:error})
+  end
+
+  if params[:file]
+    file = params[:file][:tempfile].path
+   
+  else 
+    file = "public/images/no-image.png"
+  end
+    create_listing(params[:headline],
                         params[:description],
                         current_user["id"],
                         params[:suburb],
                         Time.now,
                         params[:price],
-                        params[:file][:tempfile].path)
+                        file,
+                        )
   redirect '/user/listings'
 end
 

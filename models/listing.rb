@@ -123,3 +123,29 @@ def potential_buyer_input_validate(name, best_contact)
     end
 end
 
+def create_listing_validation(headline,description,suburb,price)
+    msg = nil
+    if headline.size < 7
+        msg = "Headline must be at least 7 characters long"
+    elsif description.size < 7
+        msg = "Description must be at least 7 characters long"
+    elsif suburb.size < 3
+        msg = "Suburb must be at least 3 characters long"
+    elsif price.size < 1
+        msg = "Price must be at least 1 characters long"
+    end
+
+    if msg 
+        return error = { headline: headline,
+                         description: description,
+                         suburb:suburb,
+                         price: price,
+                         message: msg
+                    }       
+    else
+        return nil
+    end
+
+
+end
+

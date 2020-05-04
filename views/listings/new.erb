@@ -1,16 +1,34 @@
 <h1>Create New Advertisment</h1>
-
+<% if error %> 
+    <p class="login-register-message "><%= error[:message]%></p>
+<% end %>
 <form action="/user/listings" method="post" enctype="multipart/form-data" >
-    <label for="">Headline:</label>
-    <input name ="headline" type="text">
-    <label for="">Description</label>
-    <input name= "description"type="text">
-    <label for="">Suburb</label>
-    <input name= "suburb"type="text">
-    <label for="">Price</label>
-    <input name= "price"type="text">
-    <input type="file" id="file" name="file">
-    <button>Create</button>
+    <div class="create-listing-layout">
+        <div class="input-container">
+            <input class="input-field" type="text" placeholder="Brief description (max 30 chars)" name="headline" maxlength="30" <% if error%> value='<%=error[:headline]%>' <%end%>>
+        </div>
+        <div class="input-container">
+            <textarea class="input-field" type="text" placeholder="Long description (max 150 chars)" name="description" maxlength="150"><% if error%><%=error[:description]%><%end%></textarea>
+        </div>
+        <div class="input-container">
+            <input class="input-field" type="text" placeholder="Suburb" name="suburb" <% if error%> value='<%=error[:suburb]%>' <%end%>>
+        </div>
+        <div class="input-container">
+            <input class="input-field" type="number" placeholder="$Price" name="price" <% if error%> value='<%=error[:price]%>' <%end%>>
+        </div>
+        <div class="create-listings-buttons">
+            <div class="file-input-container">
+                <input  type="file" id="file" name="file" accept="image/*">
+                <label class ="upload-label" for= "file">
+                    <i class="material-icons">
+                        add_photo_alternate
+                    </i> &nbsp;
+                    Choose a photo
+                </label>
+            </div>
+            <button class="upload-label create-button">Create</button>
+        </div>
+    </div>
     </form>
 
 

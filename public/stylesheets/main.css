@@ -12,7 +12,6 @@ h1 {
 .listings-img {
    
     width: 100%;
-    height: 100%;
     padding: 10px;
 }
 @media screen and (max-width: 500px){
@@ -432,4 +431,51 @@ nav{
     color: #f4f4f4;
   }
   
+input[type=file]{
+    display: none;
+}
 
+.upload-label {
+    color: white;
+    height: 60px;
+    width: 100%;
+    background-color: orange;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Monsterrat", sans-serif;
+}
+.create-button {
+    background-color: green;
+}
+
+.create-listing-layout {
+    display: grid;
+    grid-template-rows: .25fr 1fr .25fr .25fr .25fr .25fr;
+    margin: 0 20%;
+}
+
+.create-listings-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+
+@media screen and (min-width: 650px){
+ 
+    .create-listings-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+}
+@media screen and (min-width: 1000px){
+ 
+    .create-listing-layout {
+        margin: 0 30%;
+    }
+
+}
