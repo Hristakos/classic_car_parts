@@ -2,34 +2,57 @@
 <% if error %> 
     <p class="login-register-message "><%= error[:message]%></p>
 <% end %>
-<form action="/user/listings" method="post" enctype="multipart/form-data" >
-    <div class="create-listing-layout">
-        <div class="input-container">
-            <input class="input-field" type="text" placeholder="Brief description (max 30 chars)" name="headline" maxlength="30" <% if error%> value='<%=error[:headline]%>' <%end%>>
+<div class="create-update-listing-wrapper ">
+
+    <form class="create-update-form"action="/user/listings" method="post" enctype="multipart/form-data" >
+        <div class="listing-image-detail">
+        <img class="preview-image"src="/images/no-image.png" alt="">
+        <div class="preview">
+            <p>No files currently selected for upload</p>
+
         </div>
-        <div class="input-container">
-            <textarea class="input-field" type="text" placeholder="Long description (max 150 chars)" name="description" maxlength="150"><% if error%><%=error[:description]%><%end%></textarea>
-        </div>
-        <div class="input-container">
-            <input class="input-field" type="text" placeholder="Suburb" name="suburb" <% if error%> value='<%=error[:suburb]%>' <%end%>>
-        </div>
-        <div class="input-container">
-            <input class="input-field" type="number" placeholder="$Price" name="price" <% if error%> value='<%=error[:price]%>' <%end%>>
-        </div>
-        <div class="create-listings-buttons">
-            <div class="file-input-container">
-                <input  type="file" id="file" name="file" accept="image/*">
-                <label class ="upload-label" for= "file">
-                    <i class="material-icons">
-                        add_photo_alternate
-                    </i> &nbsp;
-                    Choose a photo
-                </label>
-            </div>
-            <button class="upload-label create-button">Create</button>
-        </div>
+    <div class="file-input-container">
+        <input  type="file" id="file" name="file" accept="image/*">
+        <label class ="upload-label" for= "file">
+        <i class="material-icons">
+            add_photo_alternate
+        </i> &nbsp;
+        Choose a photo
+        </label>
     </div>
+
+            
+       
+    </div>
+        <div class="create-listing-layout">
+            <div class="input-container">
+                <input class="input-field" type="text" placeholder="Brief description (max 30 chars)" name="headline" maxlength="30" <% if error%> value='<%=error[:headline]%>' <%end%>>
+            </div>
+            <div class="input-container">
+                <textarea class="input-field" type="text" placeholder="Long description (max 150 chars)" name="description" maxlength="150"><% if error%><%=error[:description]%><%end%></textarea>
+            </div>
+            <div class="input-container">
+                <input class="input-field" type="text" placeholder="Suburb" name="suburb" <% if error%> value='<%=error[:suburb]%>' <%end%>>
+            </div>
+            <div class="input-container">
+                <input class="input-field" type="number" placeholder="$Price" name="price" <% if error%> value='<%=error[:price]%>' <%end%>>
+            </div>
+            <div>
+
+                <button class="upload-label create-button">Create</button>
+            </div>
+        </div>
     </form>
+
+</div>
+
+
+
+
+<script src="/javascripts/application.js">  
+
+
+</script>
 
 
 

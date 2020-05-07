@@ -41,10 +41,10 @@ end
 
 get '/user/listings/:id/edit' do
   redirect "/login" unless logged_in?
-
+  error = nil
   listing = find_a_user_listing_by_ids(params[:id], current_user["id"])
   if listing
-    erb(:'listings/edit', locals:{listing:listing})
+    erb(:'listings/edit', locals:{listing:listing, error:error})
   else
     session[:user_id] = nil
     redirect '/login'
@@ -83,6 +83,7 @@ post '/user/listings' do
   else 
     file = "public/images/no-image.png"
   end
+
     create_listing(params[:headline],
                         params[:description],
                         current_user["id"],
@@ -96,11 +97,28 @@ end
 
 patch '/user/listings' do
   redirect "/login" unless logged_in?
+  error = create_listing_validation(params[:headline],
+                                    params[:description],
+                                     params[:suburb],
+                                     params[:price])
+  if error 
+    listing = find_a_listing_by_id(params[:id])
+    return erb(:'listings/edit', locals:{listing:listing, error:error})
+  end
+  if params[:file]
+    file = params[:file][:tempfile].path
+   
+  else 
+    file = "public/images/no-image.png"
+  end
+
   update_listing(params[:id],
                 params[:headline],
                 params[:description],
                 params[:suburb],
-                params[:price])
+                params[:price],
+                file,
+                current_user["id"])
   redirect '/user/listings'
 end
 

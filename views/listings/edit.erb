@@ -1,18 +1,62 @@
 <h1>Edit Advertisment</h1>
 
-<form action="/user/listings" method="post">
+<% if error %> 
+    <p class="login-register-message "><%= error[:message]%></p>
+<% end %>
+<div class="create-update-listing-wrapper ">
+
+
+<form  class="create-update-form" action="/user/listings" method="post" enctype="multipart/form-data" >
     <input type="hidden" name="_method" value="patch">
-     <input type="hidden" name ="id"  value=<%=listing["id"]%>>
-    <label for="">Headline:</label>
-    <input name ="headline" type="text" value='<%= listing["headline"]%>'>
-    <label for="">Description</label>
-    <input name= "description"type="text" value='<%= listing["description"]%>'>
-    <label for="">Suburb</label>
-    <input name= "suburb"type="text" value='<%= listing["suburb"]%>'>
-    <label for="">Price</label>
-    <input name= "price"type="text" value=<%= listing["price"]%>>
-    <input type="file" name="file">
-    <button>Update</button>
+    <input type="hidden" name ="id"  value=<%=listing["id"]%>>
+    
+    <div class="listing-image-detail">
+    <img class="preview-image"src=<%= listing["img_url"]%> alt="">
+            <div class="preview">
+                <p>No files currently selected for upload</p>
+
+            </div>
+
+    <div class="file-input-container">
+        <input  type="file" id="file" name="file" accept="image/*">
+        <label class ="upload-label" for= "file">
+        <i class="material-icons">
+        add_photo_alternate
+        </i> &nbsp;
+        Choose a photo
+        </label>
+    </div>
+
+    </div>
+
+    <div class="create-listing-layout">
+        <div class="input-container">
+            <input class="input-field" type="text" placeholder="Brief description (max 30 chars)" name="headline" maxlength="30" <% if error%> value='<%=error[:headline]%>' <%else%> value='<%= listing["headline"]%>'<%end%>>
+        </div>
+        <div class="input-container">
+            <textarea class="input-field" type="text" placeholder="Long description (max 150 chars)" name="description" maxlength="150"><% if error%><%=error[:description]%><%else%><%= listing["description"]%><%end%></textarea>
+        </div>
+        <div class="input-container">
+            <input class="input-field" type="text" placeholder="Suburb" name="suburb" <% if error%> value='<%=error[:suburb]%>'<%else%>value='<%= listing["suburb"]%>' <%end%>>
+        </div>
+        <div class="input-container">
+            <input class="input-field" type="text" placeholder="$Price" name="price" <% if error%> value='<%=error[:price]%>' <%else%>  value='<%= listing["price"]%>' <%end%>>
+        </div>
+        <div>
+
+            <button class="upload-label create-button">Update</button>
+        </div>
+
+    </div>
+    
+
+
 </form>
 
-<img src=<%= listing["img_url"]%> alt="">
+</div>
+
+
+<script src="/javascripts/application.js">  
+
+
+</script>
