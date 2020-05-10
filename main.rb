@@ -182,8 +182,8 @@ post '/listings/messages' do
     
     return  erb(:show, locals:{listing:listing, error:error})
   end
-  message = "#{params[:contact_msg]} msg sent by #{params[:potential_buyer_name]}, best contact is #{params[:potential_buyer_best_contact]}"
-  create_message_for_listing(params[:listing_id], listing[:user_id] ,message)
+  
+  create_message_for_listing(params[:listing_id], listing[:user_id] ,params[:contact_msg], params[:potential_buyer_name],params[:potential_buyer_best_contact])
   redirect "/"
 end
 

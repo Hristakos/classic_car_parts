@@ -108,11 +108,17 @@ h1 {
 }
 .user-listing-wrapper {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+
     grid-gap: 10px;
     margin-top: 30px;
 }
 .listing-layout {
+    display: grid;
+    grid-template-rows: .1fr .1fr 2fr 1fr .1fr;
+    background-color: white;
+
+}
+.user-listing-layout {
     display: grid;
     grid-template-rows: .1fr .1fr 2fr 1fr .1fr;
     background-color: white;
@@ -152,7 +158,6 @@ h1 {
 }
 .listing-description {
     padding: 3% 5%;
-    height: 125px;
     overflow: scroll;
     background-color: #f4f4f4;
     border: solid white;
@@ -229,6 +234,10 @@ h1 {
     .listing-layout {
         grid-column-start: 2;
     }
+    .user-listing-layout {
+        grid-column-start: 2;
+    }
+    
 
 }
 @media screen and (min-width: 1200px){
@@ -239,6 +248,9 @@ h1 {
         grid-template-columns: .5fr 1.5fr 1fr .5fr;
     }
     .listing-layout {
+        grid-column-start: 2;
+    }
+    .user-listing-layout {
         grid-column-start: 2;
     }
 }
@@ -546,7 +558,29 @@ input[type=file]:after{
 }
 
 .user-messages-container {
-    display: grid;
-    grid-template-rows: .25fr 1fr;
+
     background-color: white;
+    overflow: scroll;
+}
+
+.user-message-detail {
+    display: grid;
+    grid-template-rows: .25fr 1fr .25fr .25fr;
+    margin: 10px;
+}
+.user-message-date {
+    color: green;
+    text-align: left;
+}
+
+.user-message-message {
+    font-style: italic;
+    color: grey;
+}
+
+.user-message-potential-buyer-name {
+    color: orange;
+}
+.user-message-potential-buyer-contact {
+    color: orange;
 }

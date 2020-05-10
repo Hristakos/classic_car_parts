@@ -7,32 +7,36 @@
 </form>
 <a href="/user/listings/<%=listing["id"]%>/edit">Edit ad</a>
 
-<div class="listing-wrapper">       
-    <div class="listing-layout">
+<div class="user-listing-wrapper">       
+    <div class="user-listing-layout">
         <div class="listing-headline"><%=listing["headline"]%></div>
         <div class="listing-price"><%= listing["price"]%></div>
-        <img class= "listing-img" src=<%= listing["img_url"]%> alt="">
+        <div class="listing-image-conatiner"><img class= "listing-img" src=<%= listing["img_url"]%> alt=""></div>
         <div class="listing-details">
             <div class="listing-description"><p>description: <%= listing["description"]%></p></div>
         </div>
         <div class="listing-suburb"><%= listing["suburb"]%></div>
     </div>
-    <div class="user-messages-container">
+    
      <% messages = retrieve_messages_for_listing(listing["id"])%>
-        <div>
 
-        </div>
-       
-        <% if messages%>
-        
+       <div class="user-messages-container">
+        <%if messages%>
+
             <%messages.each do |message|%>
-        message =     <%=message["message"]%>
-            date = <%=message["date"]%>
+       
+        <div class="user-message-detail">
+            <div class="user-message-date">
+            <%=listing_timestamp_to_display(message["date"])%>
+           </div>
+            <div class="user-message-message">
+                <%=message["message"]%>
+            </div>
+            <div class="user-message-potential-buyer-name">FROM:<%=message["potential_buyer_name"]%></div>
+            <div class="user-message-potential-buyer-contact">CONTACT:<%=message["potential_buyer_contact"]%></div>
+        </div>
             <%end%>
-
-   
-        <%else%>
-            <p> no messages </p>
          <%end%>
-    </div>
+         </div>
+    
 </div> 

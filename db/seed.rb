@@ -35,6 +35,8 @@ run_sql("CREATE TABLE messages
     user_id Integer,
     listing_id Integer,
     message text,
+    potential_buyer_name text,
+    potential_buyer_contact text,
     date timestamp
 )",[])
 

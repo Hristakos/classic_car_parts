@@ -92,14 +92,14 @@ def all_listings_by_suburb(search,suburb_order)
     listings
 end
 
-def create_message_for_listing(listing_id, user_id ,message)
+def create_message_for_listing(listing_id, user_id ,message, potential_buyer_name, potential_buyer_contact)
 
-    run_sql( "insert into messages (listing_id, user_id, message,date) values( $1, $2,$3, $4);" ,[listing_id,user_id,message, Time.now])
+    run_sql( "insert into messages (listing_id, user_id, message, potential_buyer_name, potential_buyer_contact,date) values( $1, $2,$3,$4,$5,$6);" ,[listing_id,user_id,message,potential_buyer_name,potential_buyer_contact, Time.now])
 
 end
 
 def retrieve_messages_for_listing(listing_id)
-    messages = run_sql('select message, date from messages where listing_id = $1 order by date desc;',[listing_id])
+    messages = run_sql('select message,potential_buyer_name, potential_buyer_contact, date from messages where listing_id = $1 order by date desc;',[listing_id])
     if messages.count == 0
         return nil
     else

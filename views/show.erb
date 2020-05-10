@@ -24,7 +24,7 @@
     
     <form class="contact-form" action="/listings/messages" method="post">
         <input type="hidden" name="listing_id" value=<%=listing["id"]%>>
-        <textarea class="contact-msg-area"name="contact_msg" id="" cols="30" rows="10">Hi <%= name%>, you posted an ad for <%= listing["headline"]%> on <%= listing_date%> is it still for sale?
+        <textarea class="contact-msg-area"name="contact_msg" id="" cols="30" rows="10" maxlength="300">Hi <%= name%>, you posted an ad for <%= listing["headline"]%> on <%= listing_date%> is it still for sale?
         </textarea>
         <div class="message-contact-details">
         <div class="login-register-message">
