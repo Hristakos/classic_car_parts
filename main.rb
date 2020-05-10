@@ -177,13 +177,13 @@ end
 
 post '/listings/messages' do
   error = potential_buyer_input_validate(params[:potential_buyer_name], params[:potential_buyer_best_contact])
-
+  listing = find_a_listing_by_id(params[:listing_id])
   if error 
-    listing = find_a_listing_by_id(params[:listing_id])
+    
     return  erb(:show, locals:{listing:listing, error:error})
   end
-  msg = "#{params[:contact_msg]} msg sent by #{params[:potential_buyer_name]}, best contact is #{params[:potential_buyer_best_contact]}"
-  add_message_to_listing(params[:listing_id], msg)
+  message = "#{params[:contact_msg]} msg sent by #{params[:potential_buyer_name]}, best contact is #{params[:potential_buyer_best_contact]}"
+  create_message_for_listing(params[:listing_id], listing[:user_id] ,message)
   redirect "/"
 end
 

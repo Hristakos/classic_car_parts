@@ -22,4 +22,12 @@ CREATE TABLE users
 
 )
 
+CREATE TABLE messages
+(
+    id SERIAL PRIMARY KEY,
+    user_id Integer,
+    listing_id Integer,
+    message text,
+    date timestamp
+)
 

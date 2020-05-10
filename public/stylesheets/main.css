@@ -38,6 +38,16 @@ h1 {
     display: grid;
     color: black;
 }
+.user-listings {
+    text-decoration: none;
+    grid-template-rows: 1fr .1fr;
+    display: grid;
+    color: black;
+    grid-column-start: 2;
+}
+.user-listings-messages {
+    color: orange;
+}
 
 @media screen and (min-width: 800px){
     .wrapper{
@@ -91,6 +101,12 @@ h1 {
     color: grey
 }
 .listing-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-gap: 10px;
+    margin-top: 30px;
+}
+.user-listing-wrapper {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     grid-gap: 10px;
@@ -207,6 +223,9 @@ h1 {
     .listing-wrapper {
         grid-template-columns: .25fr 1.5fr 1fr .25fr;
     }
+    .user-listing-wrapper {
+        grid-template-columns: .25fr 1.5fr 1fr .25fr;
+    }
     .listing-layout {
         grid-column-start: 2;
     }
@@ -214,6 +233,9 @@ h1 {
 }
 @media screen and (min-width: 1200px){
     .listing-wrapper {
+        grid-template-columns: .5fr 1.5fr 1fr .5fr;
+    }
+    .user-listing-wrapper {
         grid-template-columns: .5fr 1.5fr 1fr .5fr;
     }
     .listing-layout {
@@ -521,4 +543,10 @@ input[type=file]:after{
 
         
     }
+}
+
+.user-messages-container {
+    display: grid;
+    grid-template-rows: .25fr 1fr;
+    background-color: white;
 }

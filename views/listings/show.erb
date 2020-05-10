@@ -1,9 +1,4 @@
-<h1><%=listing["headline"]%></h1>
 
-<p>description: <%= listing["description"]%></p>
-<p>suburb: <%= listing["suburb"]%></p>
-<p>price: <%= listing["price"]%></p>
-<img src=<%= listing["img_url"]%> alt="">
 
 <form action="/user/listings" method="post">
     <input type="hidden" name="_method" value="delete">
@@ -11,3 +6,33 @@
     <button>delete</button>
 </form>
 <a href="/user/listings/<%=listing["id"]%>/edit">Edit ad</a>
+
+<div class="listing-wrapper">       
+    <div class="listing-layout">
+        <div class="listing-headline"><%=listing["headline"]%></div>
+        <div class="listing-price"><%= listing["price"]%></div>
+        <img class= "listing-img" src=<%= listing["img_url"]%> alt="">
+        <div class="listing-details">
+            <div class="listing-description"><p>description: <%= listing["description"]%></p></div>
+        </div>
+        <div class="listing-suburb"><%= listing["suburb"]%></div>
+    </div>
+    <div class="user-messages-container">
+     <% messages = retrieve_messages_for_listing(listing["id"])%>
+        <div>
+
+        </div>
+       
+        <% if messages%>
+        
+            <%messages.each do |message|%>
+        message =     <%=message["message"]%>
+            date = <%=message["date"]%>
+            <%end%>
+
+   
+        <%else%>
+            <p> no messages </p>
+         <%end%>
+    </div>
+</div> 

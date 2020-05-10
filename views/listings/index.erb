@@ -1,22 +1,46 @@
 <h1>My Listings</h1>
 
+<div class="wrapper">
+   <% listings.each do |listing|%>
+      <a class="user-listings" href="/user/listings/<%= listing["id"]%>">
+         <div class="listings-layout"> 
 
+            <img class= "listings-img"src=<%= listing["img_url"]%> alt="">
 
-<% listings.each do |listing|%>
+            <div class="listings-details">
+               <div class="listing-heading"> 
+                  <%= listing["headline"] %> 
+               </div>
 
-   <div> <a href="/user/listings/<%= listing["id"]%>"><%= listing["headline"] %></a>
-   <img src=<%= listing["img_url"]%> alt="">
-   <p>suburb: <%= listing["suburb"]%></p>
-   <p> post date: <%= DateTime.parse(listing["post_date"]).ctime%></p>
-   <p> price: <%= listing["price"]%></p></div>
-   <% messages = retrieve_messages_for_listing(listing["id"])%>
+               <div class="price"> 
+                  <%= listing["price"]%>
+               </div>
+               <div class="listings-description">
+                  <%= listing["description"]%> 
+               </div>
+      
 
-   <% if messages 
-         messages.each do |message|%>
-            <p><%=message%></p>
-         <%end %>
-      <%end%>
-<% end%>
-
-
+            </div> 
+            <div class="listings-suburb-date">
+               <div class="suburb">
+                  <%= listing["suburb"]%>
+               </div>
+               <div class="date-posted">
+                  <%=listing_timestamp_to_display(listing["post_date"])%>
+               </div>
+            </div>   
+         </div>
+         <div class="user-listings-messages">
+         
+         <% messages = retrieve_messages_for_listing(listing["id"])%>
+         <% if messages%>
+            You have <%=messages.count%>
+         <% else%>
+               no
+         <%end%>
+            message(s) for this listing.
+         </div>
+      </a>
+   <% end%>
+</div>
 
