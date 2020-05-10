@@ -1,12 +1,13 @@
 
+<div class="listing-edit-delete">
+    <form class="delete-form" action="/user/listings" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name = "id" value= <%= listing["id"]%> >
+        <button class="delete-btn" >delete</button>
+    </form>
 
-<form action="/user/listings" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="hidden" name = "id" value= <%= listing["id"]%> >
-    <button>delete</button>
-</form>
-<a href="/user/listings/<%=listing["id"]%>/edit">Edit ad</a>
-
+    <a class= "edit-link"href="/user/listings/<%=listing["id"]%>/edit">Edit</a>
+</div>
 <div class="user-listing-wrapper">       
     <div class="user-listing-layout">
         <div class="listing-headline"><%=listing["headline"]%></div>
